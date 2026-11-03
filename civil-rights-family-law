@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil Rights & Family Law | Bur-Men Law Group | Waukegan, IL</title>
+  <meta name="description" content="Compassionate civil rights litigation and family law representation in Waukegan, IL, with a dedicated emphasis on fathers' rights.">
+  <meta property="og:title" content="Civil Rights & Family Law | Bur-Men Law Group">
+  <meta property="og:description" content="Dedicated advocacy for civil rights matters and compassionate guidance through family law, including fathers' rights.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body class="page-civil-rights-family-law">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="wordmark">Bur-Men Law Group</a>
+      <a href="tel:+12246378872" class="header-phone">(224) 637-8872</a>
+      <button type="button" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+      <nav id="main-nav" class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="criminal-defense.html">Criminal Defense</a></li>
+          <li><a href="civil-rights-family-law.html" aria-current="page">Civil Rights & Family Law</a></li>
+          <li><a href="make-a-payment.html">Make a Payment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html#contact-form" class="button button-primary">Request a Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-header bg-navy text-white">
+      <div class="container narrow-container text-center">
+        <h1>Civil Rights & Family Law</h1>
+        <p>Dedicated advocacy for your rights and compassionate guidance for your family.</p>
+      </div>
+    </section>
+
+    <section id="civil-rights" class="section-padding">
+      <div class="container narrow-container">
+        <h2>Civil Rights Litigation</h2>
+        <p>When your constitutional or civil rights have been violated, the consequences can be profound. At Bur-Men Law Group, we provide focused, plain-language guidance to help you understand your legal standing and available remedies.</p>
+        <p>We approach civil rights matters with a commitment to accountability and rigorous advocacy. We will review the specifics of your situation, explain the legal standards that apply, and work collaboratively with you to develop a strategy aimed at seeking meaningful resolution.</p>
+        <div class="cta-box">
+          <p>Believe your rights have been violated? Let us review your situation.</p>
+          <a href="contact.html#contact-form" class="button button-primary">Request a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section id="family-law" class="section-padding bg-ivory">
+      <div class="container narrow-container">
+        <h2>Family Law</h2>
+        <p>Family legal matters are deeply personal and often emotionally taxing. We provide compassionate, clear-eyed guidance to help you navigate these complex transitions while protecting what matters most.</p>
+        <p>Our family law practice includes a dedicated emphasis on <strong>fathers’ rights</strong>, ensuring that fathers receive fair, equitable representation in matters of custody, parenting time, and support. We believe that every parent deserves a voice and a strategy tailored to their family's unique dynamics.</p>
+        <p>Please note: While we advocate vigorously for our clients, we do not imply or guarantee specific results or special treatment in court. Every case is evaluated on its own merits, and we will provide honest, realistic expectations about your matter.</p>
+        <div class="cta-box">
+          <p>Need guidance on a family law matter? We are here to help.</p>
+          <a href="contact.html#contact-form" class="button button-primary">Request a Consultation</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h3>Bur-Men Law Group</h3>
+        <address>
+          415 W. Washington St., Suite 110<br>
+          Waukegan, IL 60085
+        </address>
+        <p><a href="tel:+12246378872" class="footer-link">(224) 637-8872</a></p>
+      </div>
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul class="footer-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="criminal-defense.html">Criminal Defense</a></li>
+          <li><a href="civil-rights-family-law.html">Civil Rights & Family Law</a></li>
+          <li><a href="make-a-payment.html">Make a Payment</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Practice & Service Areas</h3>
+        <p>Criminal Defense, Civil Rights Litigation, Family Law (including fathers’ rights).</p>
+        <p>Serving Lake, Cook, McHenry, Kane, DuPage, and surrounding Illinois counties.</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="current-year">2026</span> Bur-Men Law Group. All rights reserved.</p>
+      <p class="disclaimer-text">The information on this website is for general informational purposes only and does not constitute legal advice. Viewing this site or contacting us does not establish an attorney-client relationship.</p>
+      <div class="footer-legal-links">
+        <a href="contact.html#privacy">Privacy Policy</a>
+        <span class="separator">|</span>
+        <a href="contact.html#disclaimer">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
