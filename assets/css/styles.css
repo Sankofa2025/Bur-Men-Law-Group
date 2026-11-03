@@ -663,6 +663,7 @@ p {
 .existing-client-callout p {
   color: rgba(255, 255, 255, 0.9);
 }
+
 /* --- Partner Details & Stats --- */
 .partner-details {
   text-align: left;
@@ -695,22 +696,12 @@ p {
 .detail-block ul {
   list-style: none;
   padding-left: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .detail-block ul li {
   font-size: 0.95rem;
   color: var(--color-text);
-  position: relative;
-  padding-left: 1rem;
   margin-bottom: 0.35rem;
   line-height: 1.4;
-}
-
-.detail-block ul li::before {
-  content: "•";
-  color: var(--color-gold);
-  position: absolute;
-  left: 0;
-  font-weight: bold;
 }
