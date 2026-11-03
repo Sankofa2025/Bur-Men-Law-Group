@@ -9,11 +9,19 @@
   <meta property="og:description" content="Reach out to Bur-Men Law Group to request a consultation. Located across from the Lake County Courthouse.">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/chatbot.css">
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/faq-data.js" defer></script>
+  <script src="assets/js/chatbot.js" defer></script>
+  <noscript>
+    <style>.bm-chat-launcher { display: none !important; }</style>
+    <div style="background:#f9f7f2; padding:1rem; text-align:center; border-bottom:1px solid #e0ddd5;">
+      JavaScript is disabled. Please call us at <a href="tel:+12246378872">(224) 637-8872</a>.
+    </div>
+  </noscript>
 </head>
 <body class="page-contact">
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="wordmark">Bur-Men Law Group</a>
@@ -34,7 +42,6 @@
       </nav>
     </div>
   </header>
-
   <main id="main-content">
     <section class="page-header bg-navy text-white">
       <div class="container narrow-container text-center">
@@ -42,51 +49,40 @@
         <p>We welcome the opportunity to discuss your legal matter. Reach out to request a consultation.</p>
       </div>
     </section>
-
     <section class="section-padding">
       <div class="container">
         <div class="contact-grid">
           <div class="contact-info">
             <h2>Get in Touch</h2>
             <p><strong>Phone:</strong> <a href="tel:+12246378872">(224) 637-8872</a></p>
-            <p><strong>Address:</strong><br>
-            Bur-Men Law Group<br>
-            415 W. Washington St., Suite 110<br>
-            Waukegan, IL 60085</p>
+            <p><strong>Address:</strong><br>Bur-Men Law Group<br>415 W. Washington St., Suite 110<br>Waukegan, IL 60085</p>
             <p><a href="https://www.google.com/maps/search/?api=1&query=415+W+Washington+St+Suite+110+Waukegan+IL+60085" target="_blank" rel="noopener noreferrer" class="text-link">Get Directions &rarr;</a></p>
-            
             <div class="info-box">
               <h3>Service Area</h3>
               <p>We proudly serve clients across Lake, Cook, McHenry, Kane, DuPage, and surrounding counties in Illinois.</p>
             </div>
-
             <div class="info-box existing-client-callout">
               <h3>Existing Clients</h3>
               <p>Need to make a payment? Please use our secure payment portal.</p>
               <a href="make-a-payment.html" class="button button-secondary">Make a Payment</a>
             </div>
           </div>
-
           <div class="contact-form-wrapper">
             <h2 id="contact-form">Request a Consultation</h2>
             <p class="form-warning">Please share only a brief description. <strong>Do not include confidential details, Social Security numbers, financial information, card or bank details, or documents.</strong> Do not use this form for urgent or time-sensitive matters.</p>
-            
             <form id="contact-form-element" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
               <div class="form-group">
                 <label for="name">Full Name <span aria-hidden="true">*</span></label>
-                <input type="text" id="name" name="name" required autocomplete="name" aria-describedby="name-help">
+                <input type="text" id="name" name="name" required autocomplete="name">
               </div>
-
               <div class="form-group">
                 <label for="email">Email Address <span aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-help">
+                <input type="email" id="email" name="email" required autocomplete="email">
               </div>
-
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" aria-describedby="phone-help">
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
               </div>
-
               <div class="form-group">
                 <label for="practice-area">Practice Area <span aria-hidden="true">*</span></label>
                 <select id="practice-area" name="practice-area" required>
@@ -97,33 +93,27 @@
                   <option value="Other / Not Sure">Other / Not Sure</option>
                 </select>
               </div>
-
               <div class="form-group">
                 <label for="message">Brief Message <span aria-hidden="true">*</span></label>
-                <textarea id="message" name="message" rows="5" required maxlength="1000" aria-describedby="message-help"></textarea>
+                <textarea id="message" name="message" rows="5" required maxlength="1000"></textarea>
               </div>
-
               <div class="form-group checkbox-group">
                 <input type="checkbox" id="acknowledgment" name="acknowledgment" required>
                 <label for="acknowledgment">I understand that submitting this form does not create an attorney-client relationship, and I will not include confidential or time-sensitive information. <span aria-hidden="true">*</span></label>
               </div>
-
               <button type="submit" class="button button-primary">Submit Inquiry</button>
-              
               <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
             </form>
           </div>
         </div>
       </div>
     </section>
-
     <section id="privacy" class="section-padding bg-ivory">
       <div class="container narrow-container">
         <h2>Privacy Notice</h2>
         <p>When you submit the contact form on this website, the information you provide is transmitted through Formspree, a third-party form handling service, for the sole purpose of inquiry management by Bur-Men Law Group. We do not sell or share your contact information for marketing purposes. Please note that standard internet transmissions are not inherently secure, which is why we instruct you not to send confidential or sensitive information through this form.</p>
       </div>
     </section>
-
     <section id="disclaimer" class="section-padding">
       <div class="container narrow-container">
         <h2>Legal Disclaimer</h2>
@@ -133,15 +123,11 @@
       </div>
     </section>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-col">
         <h3>Bur-Men Law Group</h3>
-        <address>
-          415 W. Washington St., Suite 110<br>
-          Waukegan, IL 60085
-        </address>
+        <address>415 W. Washington St., Suite 110<br>Waukegan, IL 60085</address>
         <p><a href="tel:+12246378872" class="footer-link">(224) 637-8872</a></p>
       </div>
       <div class="footer-col">
