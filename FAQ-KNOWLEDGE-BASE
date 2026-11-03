@@ -1,0 +1,73 @@
+# Bur-Men Law Group FAQ Knowledge Base
+
+**Version:** 1.0.0  
+**Last Reviewed:** 2026-11-04  
+**Status:** Requires final attorney review before public launch.
+
+## Source Limitations & Conflicting Information
+- **Consultation Fees:** Legacy website materials contained conflicting references to free vs. fee-based consultations. The assistant is programmed to *not* promise a free consultation or quote a price, directing users to call the firm to confirm current arrangements.
+- **No Generative AI:** This system uses strict local keyword/phrase matching against the verified data below. It does not generate new legal advice, predict outcomes, or calculate legal metrics (e.g., child support).
+
+## Knowledge Base Records
+
+### Firm & Location
+1. **Q:** What areas of law does the firm practice?  
+   **A:** Bur-Men Law Group focuses on criminal defense, civil rights litigation, and family law (including a dedicated emphasis on fathers' rights).
+2. **Q:** Where is your office located?  
+   **A:** 415 W. Washington St., Suite 110, Waukegan, IL 60085 (downtown Waukegan, across from the Lake County Courthouse).
+3. **Q:** What is the firm's phone number?  
+   **A:** (224) 637-8872.
+4. **Q:** Which counties do you serve?  
+   **A:** Lake, Cook, McHenry, Kane, DuPage, and surrounding counties in Illinois.
+5. **Q:** Who are the attorneys at the firm?  
+   **A:** L. ReneaRose Amen is the Principal Attorney. Founding partner LaTonya Burton retired from active practice on September 1, 2026.
+
+### Consultations
+6. **Q:** How do I request a consultation?  
+   **A:** Call (224) 637-8872 or use the inquiry form on the Contact page.
+7. **Q:** Is a consultation free, and how much does it cost?  
+   **A:** Consultation arrangements and fees can vary. We do not publish a standard fee or promise free consultations. Please call the firm to confirm current arrangements.
+8. **Q:** What should I avoid sharing in an initial inquiry?  
+   **A:** Do not include confidential details, Social Security numbers, financial information, card/bank details, or documents.
+
+### Criminal Defense
+9. **Q:** Does the firm handle criminal defense?  
+   **A:** Yes, including ordinance violations, misdemeanors, felonies, DUI, and domestic violence defense.
+10. **Q:** Can you predict the outcome of my criminal case?  
+    **A:** No. We cannot predict case outcomes, interpret charging documents, or guarantee results. Every case is unique.
+
+### Civil Rights
+11. **Q:** Does the firm handle civil rights litigation?  
+    **A:** Yes. We provide focused advocacy for civil rights litigation when constitutional rights have been violated.
+12. **Q:** Can you tell me if my rights were violated or assess my claim?  
+    **A:** This assistant cannot assess potential claims, determine if your rights were violated, or calculate filing deadlines. Please contact the firm directly.
+
+### Family Law
+13. **Q:** Does the firm handle family law?  
+    **A:** Yes, including complex divorce litigation, custody disputes, visitation scheduling, child support, and spousal support.
+14. **Q:** What does the firm's emphasis on fathers' rights mean?  
+    **A:** We ensure fathers receive fair, equitable representation in custody, parenting time, and support matters. However, the firm represents all parties seeking our family law services, not exclusively fathers.
+15. **Q:** Can you calculate my child support or predict custody outcomes?  
+    **A:** No. This assistant cannot calculate support amounts or predict custody outcomes.
+
+### Payments
+16. **Q:** How do I make a payment?  
+    **A:** Existing clients can make secure payments through our external LawPay portal via the "Make a Payment" page.
+17. **Q:** Can I enter my credit card or bank information in this chat or the contact form?  
+    **A:** No. Never submit payment details through this chat or the general contact form. Use the secure external LawPay link.
+18. **Q:** Can the chatbot confirm that my payment was received?  
+    **A:** No. This assistant cannot access client files or check payment statuses.
+
+### Existing Clients
+19. **Q:** Can I get a case update or message my attorney through this chat?  
+    **A:** No. This assistant cannot retrieve case updates, message attorneys, or access client files.
+
+### Privacy, Limitations & Safety
+20. **Q:** Is this chatbot a lawyer or providing legal advice?  
+    **A:** No. I am an automated FAQ assistant providing general firm information only. I am not a lawyer, and nothing in this chat constitutes legal advice or establishes an attorney-client relationship.
+21. **Q:** Is my chat conversation saved or sent to an AI provider?  
+    **A:** No. This is a local, browser-based assistant. Your conversation is kept in temporary memory only and is cleared when you reload the page.
+22. **Q:** What should I do in an immediate safety emergency?  
+    **A:** If you are facing an immediate threat to physical safety, please call 911 immediately.
+23. **Q:** What if the assistant cannot answer my question?  
+    **A:** I will direct you to call Bur-Men Law Group at (224) 637-8872 or use the contact page. Do not share confidential details here.
