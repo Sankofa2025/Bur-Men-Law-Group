@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Chatbot script loaded');
   
   if (!window.BurMenFAQData) {
-    console.error('BurMenFAQData not found! Check that faq-data.js is loaded.');
+    console.error('BurMenFAQData not found! Check that faq-data.js is loaded before chatbot.js.');
     return;
   }
   
-  console.log('BurMenFAQData found:', window.BurMenFAQData);
+  console.log('BurMenFAQData found.');
 
   const data = window.BurMenFAQData;
   let isOpen = false;
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      // Create Launcher
+      // 1. Create Launcher
       launcherBtn = document.createElement('button');
       launcherBtn.className = 'bm-chat-launcher';
       launcherBtn.type = 'button';
@@ -36,16 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(launcherBtn);
       console.log('Launcher button created');
 
-      // Also trigger from homepage button if it exists
-      const homeTrigger = document.querySelector('.bm-chat-trigger-btn');
-      if (homeTrigger) {
-        homeTrigger.addEventListener('click', (e) => {
-          e.preventDefault();
-          openPanel();
-        });
-      }
-
-      // Create Panel
+      // 2. Create Panel
       panel = document.createElement('div');
       panel.className = 'bm-chat-panel';
       panel.id = 'bm-chat-panel';
@@ -61,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="bm-chat-scope">General firm information only—not legal advice. Please do not share confidential or time-sensitive details.</div>
         <div class="bm-chat-messages" role="log" aria-live="polite" aria-atomic="false"></div>
         <div class="bm-chat-input-area">
-          <label for="bm-chat-input" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;">Type your question</label>
+          <label for="bm-chat-input" style="position:absolute;width:1px;height:1px;overflow:hidden;">Type your question</label>
           <textarea id="bm-chat-input" class="bm-chat-input" placeholder="Type your question..." rows="1" maxlength="500"></textarea>
           <button type="button" class="bm-chat-send" aria-label="Send message">Send</button>
         </div>
@@ -69,13 +60,20 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(panel);
       console.log('Chat panel created');
 
-      // Cache DOM elements
+      // 3. Cache DOM elements (MUST happen after innerHTML and append)
       messagesContainer = panel.querySelector('.bm-chat-messages');
       inputField = panel.querySelector('#bm-chat-input');
       sendBtn = panel.querySelector('.bm-chat-send');
       closeBtn = panel.querySelector('.bm-chat-close');
 
-      // Event Listeners
+      // Safeguard: ensure elements were found
+      if (!inputField || !messagesContainer || !sendBtn || !closeBtn) {
+        console.error('Failed to find chat elements in panel. Check panel HTML structure.');
+        return;
+      }
+      console.log('DOM elements cached successfully');
+
+      // 4. Event Listeners (Now safely inside init)
       launcherBtn.addEventListener('click', togglePanel);
       closeBtn.addEventListener('click', closePanel);
       sendBtn.addEventListener('click', handleUserMessage);
@@ -87,8 +85,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
+      // Auto-resize textarea
+      inputField.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+      });
+
+      // Homepage trigger button
+      const homeTrigger = document.querySelector('.bm-chat-trigger-btn');
+      if (homeTrigger) {
+        homeTrigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          openPanel();
+        });
+      }
+
       // Initial Welcome Message
-      addBotMessage("Welcome. I can help you find information about Bur-Men Law Group's practice areas, consultations, office, and payment link. What would you like to know?", [
+      addBotMessage("Welcome. I can help you find information about Bur-Men Law Group’s practice areas, consultations, office, and payment link. What would you like to know?", [
         "What types of cases do you handle?",
         "Where is your office?",
         "How do I request a consultation?",
@@ -208,19 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (highestScore >= 3 && bestMatch) {
-      let responseText = bestMatch.answer;
       let suggestions = [];
-      
       const sameCategory = data.faqs.filter(f => f.category === bestMatch.category && f.id !== bestMatch.id).slice(0, 2);
       suggestions = sameCategory.map(f => f.question);
 
       const msgDiv = document.createElement('div');
       msgDiv.className = 'bm-chat-message bot';
       const p = document.createElement('p');
-      p.textContent = responseText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '');
       
       let htmlSafe = bestMatch.answer;
-      if (bestMatch.relatedLinks.length > 0) {
+      if (bestMatch.relatedLinks && bestMatch.relatedLinks.length > 0) {
          htmlSafe += " " + bestMatch.relatedLinks.map(l => `<a href="${l.url}" target="_blank" rel="noopener">${l.text}</a>`).join(" ");
       }
       p.innerHTML = htmlSafe;
@@ -253,10 +263,6 @@ document.addEventListener('DOMContentLoaded', () => {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
-  inputField.addEventListener('input', function() {
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight) + 'px';
-  });
-
+  // Run initialization
   init();
 });
