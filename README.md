@@ -1,6 +1,6 @@
 # Bur-Men Law Group Website
 
-A complete, modern, six-page static website for Bur-Men Law Group, designed for easy deployment via GitHub Pages. It requires no build tools, package managers, or backend servers.
+A complete, modern, six-page static website for Bur-Men Law Group, featuring a local, knowledge-base-driven FAQ assistant. Designed for easy deployment via GitHub Pages. No build tools, package managers, or backend servers required.
 
 ## Repository Structure
 
@@ -14,8 +14,12 @@ A complete, modern, six-page static website for Bur-Men Law Group, designed for 
 ├── contact.html
 ├── assets/
 │   ├── css/
-│   │   └── styles.css
+│   │   ├── styles.css
+│   │   └── chatbot.css
 │   └── js/
-│       └── main.js
+│       ├── main.js
+│       ├── faq-data.js
+│       └── chatbot.js
+├── FAQ-KNOWLEDGE-BASE.md
 ├── README.md
 └── .nojekyll
