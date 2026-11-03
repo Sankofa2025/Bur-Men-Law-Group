@@ -145,3 +145,20 @@ p { margin-bottom: var(--spacing-sm); }
 .partner-image-top {
   object-position: center 15%;
 }
+
+/* --- Partner Card Alignment Fix --- */
+.partner-card h3 {
+  min-height: 3.6rem; /* Ensures 2-line names don't push the bio lower than 1-line names */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.partner-card .status-badge {
+  margin-bottom: 0.5rem;
+}
+
+.partner-card .partner-role {
+  margin-bottom: 1rem;
+}
