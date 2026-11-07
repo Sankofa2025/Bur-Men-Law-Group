@@ -193,3 +193,13 @@ p { margin-bottom: var(--spacing-sm); }
   background-color: #fcfbf9;
   border-color: var(--color-border);
 }
+/* Solid placeholder for missing images */
+.partner-image-wrapper {
+  background-color: var(--color-navy); /* Solid navy block if image is missing */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: If you want initials to show when image is missing, you can add this later, 
+   but for now, the solid navy block satisfies the "solid placeholder" requirement. */
