@@ -1,7 +1,7 @@
 # Bur-Men Law Group FAQ Knowledge Base
 
 **Version:** 1.0.0  
-**Last Reviewed:** 2026-11-04  
+**Last Reviewed:** 2026-11-10  
 **Status:** Requires final attorney review before public launch.
 
 ## Source Limitations & Conflicting Information
@@ -20,7 +20,7 @@
 4. **Q:** Which counties do you serve?  
    **A:** Lake, Cook, McHenry, Kane, DuPage, and surrounding counties in Illinois.
 5. **Q:** Who are the attorneys at the firm?  
-   **A:** L. ReneaRose Amen is the Principal Attorney. Founding partner LaTonya Burton retired from active practice on September 1, 2026.
+   **A:** L. ReneaRose Amen is the Principal Attorney, supported by Attorney Maurice Hunt. Founding partner LaTonya Burton retired from active practice on September 1, 2026.
 
 ### Consultations
 6. **Q:** How do I request a consultation?  
