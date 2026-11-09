@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   dropdownToggles.forEach(toggleBtn => {
     toggleBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      e.stopPropagation(); // Prevent click from bubbling up to the document listener
+      e.stopPropagation(); 
       const menu = toggleBtn.nextElementSibling;
       const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
       toggleBtn.setAttribute('aria-expanded', !isExpanded);
