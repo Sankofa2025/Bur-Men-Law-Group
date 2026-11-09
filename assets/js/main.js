@@ -74,3 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// Dropdown toggles for mobile
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+dropdownToggles.forEach(toggle => {
+  toggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    const menu = toggle.nextElementSibling;
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !isExpanded);
+    menu.classList.toggle('is-open');
+  });
+});
