@@ -68,6 +68,39 @@ p { margin-bottom: var(--spacing-sm); }
   .main-nav.js-enabled .button { width: 100%; text-align: center; margin-top: var(--spacing-sm); }
 }
 
+/* --- Dropdown Navigation --- */
+.has-dropdown { position: relative; }
+.dropdown-toggle {
+  background: none; border: none; font: inherit; color: inherit;
+  cursor: pointer; display: flex; align-items: center; gap: 4px;
+  padding: 0; text-decoration: none; font-weight: 500; font-size: 0.95rem;
+}
+.dropdown-toggle:hover { color: var(--color-gold-hover); }
+.dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 0;
+  background: var(--color-white); border: 1px solid var(--color-border);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  list-style: none; padding: 0.5rem 0; min-width: 220px; z-index: 101;
+  margin-top: 1rem;
+}
+.dropdown-menu li a {
+  display: block; padding: 0.75rem 1rem; text-decoration: none;
+  color: var(--color-text); white-space: nowrap;
+}
+.dropdown-menu li a:hover { background-color: var(--color-ivory); color: var(--color-navy); }
+@media (min-width: 901px) {
+  .has-dropdown:hover .dropdown-menu,
+  .has-dropdown:focus-within .dropdown-menu { display: block; }
+}
+@media (max-width: 900px) {
+  .dropdown-menu {
+    position: static; box-shadow: none; border: none;
+    background: transparent; padding-left: 1rem; min-width: auto; margin-top: 0;
+  }
+  .dropdown-menu.is-open { display: block; }
+  .dropdown-toggle { width: 100%; justify-content: space-between; padding: 0.5rem 0; }
+}
+
 .button { display: inline-block; padding: 0.75rem 1.5rem; border-radius: var(--radius); text-decoration: none; font-weight: 600; text-align: center; transition: background-color 0.2s ease, transform 0.1s ease; border: 2px solid transparent; cursor: pointer; font-size: 1rem; }
 .button:active { transform: translateY(1px); }
 .button-primary { background-color: var(--color-gold); color: var(--color-white); }
@@ -141,7 +174,7 @@ p { margin-bottom: var(--spacing-sm); }
 .existing-client-callout h3 { color: var(--color-gold); }
 .existing-client-callout p { color: rgba(255, 255, 255, 0.9); }
 
-.partner-image-wrapper { margin-bottom: var(--spacing-md); overflow: hidden; border-radius: var(--radius); }
+.partner-image-wrapper { margin-bottom: var(--spacing-md); overflow: hidden; border-radius: var(--radius); background-color: var(--color-navy); display: flex; align-items: center; justify-content: center; }
 .partner-image { width: 100%; height: 400px; object-fit: cover; object-position: center; border-radius: var(--radius); }
 .partner-image-top { object-position: center 15%; }
 
@@ -164,8 +197,6 @@ p { margin-bottom: var(--spacing-sm); }
 .faq-item p { padding: 0 1rem 1rem 1rem; margin-bottom: 0; color: var(--color-text-light); }
 
 /* --- Partner Card Alignment & Highlighting --- */
-
-/* Wrapper for Name, Badge, and Role to ensure bio always starts at the same height */
 .partner-intro {
   min-height: 130px;
   display: flex;
@@ -173,109 +204,8 @@ p { margin-bottom: var(--spacing-sm); }
   align-items: center;
   margin-bottom: 1rem;
 }
+.partner-card h3 { margin-bottom: 0.5rem; }
+.partner-card .partner-role { margin-bottom: 0; }
 
-.partner-card h3 {
-  margin-bottom: 0.5rem;
-}
-
-.partner-card .partner-role { 
-  margin-bottom: 0; 
-}
-
-/* Highlighted Principal Attorney Card */
-.partner-card.highlighted {
-  border-color: var(--color-gold);
-  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.15);
-}
-
-/* Less Highlighted Retired Partner Card */
-.partner-card.retired-card {
-  background-color: #fcfbf9;
-  border-color: var(--color-border);
-}
-/* Solid placeholder for missing images */
-.partner-image-wrapper {
-  background-color: var(--color-navy); /* Solid navy block if image is missing */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Optional: If you want initials to show when image is missing, you can add this later, 
-   but for now, the solid navy block satisfies the "solid placeholder" requirement. */
-/* --- Dropdown Navigation --- */
-.has-dropdown { position: relative; }
-
-.dropdown-toggle {
-  background: none; border: none; font: inherit; color: inherit;
-  cursor: pointer; display: flex; align-items: center; gap: 4px;
-  padding: 0; text-decoration: none; font-weight: 500; font-size: 0.95rem;
-}
-.dropdown-toggle:hover { color: var(--color-gold-hover); }
-
-.dropdown-menu {
-  display: none; position: absolute; top: 100%; left: 0;
-  background: var(--color-white); border: 1px solid var(--color-border);
-  border-radius: var(--radius); box-shadow: var(--shadow);
-  list-style: none; padding: 0.5rem 0; min-width: 220px; z-index: 101;
-  margin-top: 1rem;
-}
-.dropdown-menu li a {
-  display: block; padding: 0.75rem 1rem; text-decoration: none;
-  color: var(--color-text); white-space: nowrap;
-}
-.dropdown-menu li a:hover { background-color: var(--color-ivory); color: var(--color-navy); }
-
-/* Desktop Hover Dropdown */
-@media (min-width: 901px) {
-  .has-dropdown:hover .dropdown-menu,
-  .has-dropdown:focus-within .dropdown-menu { display: block; }
-}
-
-/* Mobile Dropdown */
-@media (max-width: 900px) {
-  .dropdown-menu {
-    position: static; box-shadow: none; border: none;
-    background: transparent; padding-left: 1rem; min-width: auto; margin-top: 0;
-  }
-  .dropdown-menu.is-open { display: block; }
-  .dropdown-toggle { width: 100%; justify-content: space-between; padding: 0.5rem 0; }
-}
-/* --- Dropdown Navigation --- */
-.has-dropdown { position: relative; }
-
-.dropdown-toggle {
-  background: none; border: none; font: inherit; color: inherit;
-  cursor: pointer; display: flex; align-items: center; gap: 4px;
-  padding: 0; text-decoration: none; font-weight: 500; font-size: 0.95rem;
-}
-.dropdown-toggle:hover { color: var(--color-gold-hover); }
-
-.dropdown-menu {
-  display: none; position: absolute; top: 100%; left: 0;
-  background: var(--color-white); border: 1px solid var(--color-border);
-  border-radius: var(--radius); box-shadow: var(--shadow);
-  list-style: none; padding: 0.5rem 0; min-width: 220px; z-index: 101;
-  margin-top: 1rem;
-}
-.dropdown-menu li a {
-  display: block; padding: 0.75rem 1rem; text-decoration: none;
-  color: var(--color-text); white-space: nowrap;
-}
-.dropdown-menu li a:hover { background-color: var(--color-ivory); color: var(--color-navy); }
-
-/* Desktop Hover Dropdown */
-@media (min-width: 901px) {
-  .has-dropdown:hover .dropdown-menu,
-  .has-dropdown:focus-within .dropdown-menu { display: block; }
-}
-
-/* Mobile Dropdown */
-@media (max-width: 900px) {
-  .dropdown-menu {
-    position: static; box-shadow: none; border: none;
-    background: transparent; padding-left: 1rem; min-width: auto; margin-top: 0;
-  }
-  .dropdown-menu.is-open { display: block; }
-  .dropdown-toggle { width: 100%; justify-content: space-between; padding: 0.5rem 0; }
-}
+.partner-card.highlighted { border-color: var(--color-gold); box-shadow: 0 8px 24px rgba(197, 160, 89, 0.15); }
+.partner-card.retired-card { background-color: #fcfbf9; border-color: var(--color-border); }
