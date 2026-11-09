@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   dropdownToggles.forEach(toggleBtn => {
     toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Prevents anchor link from jumping to top
       e.stopPropagation(); 
       const menu = toggleBtn.nextElementSibling;
       const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
