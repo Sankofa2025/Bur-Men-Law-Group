@@ -68,18 +68,11 @@ p { margin-bottom: var(--spacing-sm); }
   .main-nav.js-enabled .button { width: 100%; text-align: center; margin-top: var(--spacing-sm); }
 }
 
-/* --- Dropdown Navigation (FIXED ALIGNMENT) --- */
-.has-dropdown { 
-  position: relative; 
-  display: flex; 
-  align-items: center; /* Forces button to align perfectly with sibling links */
-}
+/* --- Dropdown Navigation --- */
+.has-dropdown { position: relative; display: flex; align-items: center; }
 .dropdown-toggle {
-  background: none; border: none; font: inherit; color: inherit;
-  cursor: pointer; display: flex; align-items: center; gap: 4px;
-  padding: 0; margin: 0; /* Removes default button spacing */
-  text-decoration: none; font-weight: 500; font-size: 0.95rem;
-  line-height: 1; /* Matches link baseline */
+  display: flex; align-items: center; gap: 4px;
+  /* Inherits .main-nav a styles automatically */
 }
 .dropdown-toggle:hover { color: var(--color-gold-hover); }
 
