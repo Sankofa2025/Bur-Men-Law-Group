@@ -17,121 +17,60 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Practice Areas dropdown — single coordinated state machine
+  // Practice Areas dropdown logic
   const dropdowns = document.querySelectorAll('.has-dropdown');
-  const isTouchDevice = () => window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
   function closeAllDropdowns() {
     dropdowns.forEach(dd => {
-      dd.classList.remove('is-open', 'user-closed');
+      dd.classList.remove('is-open');
       const btn = dd.querySelector('.dropdown-toggle');
       if (btn) btn.setAttribute('aria-expanded', 'false');
     });
-  }
-
-  function toggleDropdown(dd) {
-    const btn = dd.querySelector('.dropdown-toggle');
-    if (!btn) return;
-    const isOpen = dd.classList.contains('is-open');
-    // If user previously closed via Escape, allow reopen
-    dd.classList.remove('user-closed');
-    dd.classList.toggle('is-open');
-    btn.setAttribute('aria-expanded', String(!isOpen));
-  }
-
-  function openDropdown(dd) {
-    const btn = dd.querySelector('.dropdown-toggle');
-    if (!btn) return;
-    dd.classList.remove('user-closed');
-    dd.classList.add('is-open');
-    btn.setAttribute('aria-expanded', 'true');
-  }
-
-  function closeDropdown(dd) {
-    const btn = dd.querySelector('.dropdown-toggle');
-    if (!btn) return;
-    dd.classList.remove('is-open');
-    dd.classList.add('user-closed'); // prevent hover from reopening
-    btn.setAttribute('aria-expanded', 'false');
   }
 
   dropdowns.forEach(dd => {
     const btn = dd.querySelector('.dropdown-toggle');
     if (!btn) return;
 
-    // Click/tap toggle — works on all devices
+    // Click/tap toggle (mainly for mobile)
     btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleDropdown(dd);
-    });
-
-    // Desktop: close on mouseleave (only if not user-closed via Escape)
-    dd.addEventListener('mouseleave', () => {
-      dd.classList.remove('user-closed');
-      if (!isTouchDevice()) {
-        dd.classList.remove('is-open');
-        btn.setAttribute('aria-expanded', 'false');
+      // On desktop, let CSS hover handle it, but if they click, toggle the class
+      if (window.innerWidth > 900) {
+         // If they click on desktop, we just ensure it stays open if they move mouse away
+         dd.classList.toggle('is-open');
+         const isOpen = dd.classList.contains('is-open');
+         btn.setAttribute('aria-expanded', String(isOpen));
+      } else {
+         // Mobile behavior
+         e.stopPropagation();
+         const isOpen = dd.classList.contains('is-open');
+         dd.classList.toggle('is-open');
+         btn.setAttribute('aria-expanded', String(!isOpen));
       }
     });
 
-    // Keyboard: Enter/Space on trigger toggles
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        e.stopPropagation();
-        toggleDropdown(dd);
-      }
-      if (e.key === 'Escape') {
-        closeDropdown(dd);
-        btn.focus();
-      }
-    });
-
-    // Submenu links: close dropdown on selection (mobile mainly)
+    // Submenu links: close dropdown on selection
     const submenuLinks = dd.querySelectorAll('.dropdown-menu a');
     submenuLinks.forEach(link => {
       link.addEventListener('click', () => {
-        // Let the link navigate normally; just clean up state
-        dd.classList.remove('is-open', 'user-closed');
+        dd.classList.remove('is-open');
         btn.setAttribute('aria-expanded', 'false');
-      });
-      link.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          e.preventDefault();
-          closeDropdown(dd);
-          btn.focus();
-        }
       });
     });
   });
 
-  // Outside click closes dropdowns (but not the main nav toggle button)
+  // Outside click closes dropdowns
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.has-dropdown')) {
       closeAllDropdowns();
     }
   });
 
-  // Escape anywhere closes dropdowns
+  // Escape key closes dropdowns
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      const anyOpen = document.querySelector('.has-dropdown.is-open');
-      if (anyOpen) {
-        e.preventDefault();
-        closeAllDropdowns();
-      }
+      closeAllDropdowns();
     }
-  });
-
-  // Resize: clean up stale state when crossing the mobile/desktop breakpoint
-  let lastWidth = window.innerWidth;
-  window.addEventListener('resize', () => {
-    const currentWidth = window.innerWidth;
-    const crossedBreakpoint =
-      (lastWidth <= 900 && currentWidth > 900) ||
-      (lastWidth > 900 && currentWidth <= 900);
-    if (crossedBreakpoint) closeAllDropdowns();
-    lastWidth = currentWidth;
   });
 
   // Formspree contact form handler
