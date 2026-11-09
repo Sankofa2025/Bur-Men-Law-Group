@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Dropdown toggles for mobile (FIXED)
+  // Dropdown toggles for mobile
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   dropdownToggles.forEach(toggleBtn => {
     toggleBtn.addEventListener('click', (e) => {
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Close dropdowns when clicking outside (FIXED)
+  // Close dropdowns when clicking outside
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.has-dropdown')) {
       document.querySelectorAll('.dropdown-menu.is-open').forEach(menu => {
