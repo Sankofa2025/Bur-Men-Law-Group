@@ -56,7 +56,7 @@ p { margin-bottom: var(--spacing-sm); }
 .hamburger::after { top: 8px; }
 
 .main-nav { display: flex; align-items: center; gap: 1.5rem; }
-.main-nav ul { display: flex; list-style: none; gap: 1.25rem; }
+.main-nav ul { display: flex; list-style: none; gap: 1.25rem; align-items: center; }
 .main-nav a { text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 .main-nav a[aria-current="page"] { color: var(--color-gold); border-bottom: 2px solid var(--color-gold); }
 
@@ -64,20 +64,25 @@ p { margin-bottom: var(--spacing-sm); }
   .mobile-menu-toggle { display: block; }
   .main-nav.js-enabled { display: none; flex-direction: column; align-items: flex-start; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-white); border-bottom: 1px solid var(--color-border); padding: var(--spacing-md); box-shadow: var(--shadow); }
   .main-nav.js-enabled.is-open { display: flex; }
-  .main-nav.js-enabled ul { flex-direction: column; gap: var(--spacing-sm); width: 100%; }
+  .main-nav.js-enabled ul { flex-direction: column; gap: var(--spacing-sm); width: 100%; align-items: flex-start; }
   .main-nav.js-enabled .button { width: 100%; text-align: center; margin-top: var(--spacing-sm); }
 }
 
-/* --- Dropdown Navigation (FIXED) --- */
-.has-dropdown { position: relative; }
+/* --- Dropdown Navigation (FIXED ALIGNMENT) --- */
+.has-dropdown { 
+  position: relative; 
+  display: flex; 
+  align-items: center; /* Forces button to align perfectly with sibling links */
+}
 .dropdown-toggle {
   background: none; border: none; font: inherit; color: inherit;
   cursor: pointer; display: flex; align-items: center; gap: 4px;
-  padding: 0; text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  padding: 0; margin: 0; /* Removes default button spacing */
+  text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  line-height: 1; /* Matches link baseline */
 }
 .dropdown-toggle:hover { color: var(--color-gold-hover); }
 
-/* CRITICAL FIX: Force hide and vertical layout to override parent flex */
 .dropdown-menu {
   display: none !important;
   flex-direction: column !important;
@@ -93,7 +98,6 @@ p { margin-bottom: var(--spacing-sm); }
 }
 .dropdown-menu li a:hover { background-color: var(--color-ivory); color: var(--color-navy); }
 
-/* Desktop Hover */
 @media (min-width: 901px) {
   .has-dropdown:hover .dropdown-menu,
   .has-dropdown:focus-within .dropdown-menu {
@@ -101,7 +105,6 @@ p { margin-bottom: var(--spacing-sm); }
   }
 }
 
-/* Mobile Toggle */
 @media (max-width: 900px) {
   .dropdown-menu {
     position: static; box-shadow: none; border: none;
