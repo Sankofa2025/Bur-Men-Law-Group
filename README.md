@@ -16,10 +16,14 @@ A complete, modern, six-page static website for Bur-Men Law Group, featuring a l
 │   ├── css/
 │   │   ├── styles.css
 │   │   └── chatbot.css
-│   └── js/
-│       ├── main.js
-│       ├── faq-data.js
-│       └── chatbot.js
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── faq-data.js
+│   │   └── chatbot.js
+│   └── images/
+│       ├── ReneaRose Amen.webp
+│       ├── Maurice Hunt.jpg
+│       └── Latonya Burton.webp
 ├── FAQ-KNOWLEDGE-BASE.md
 ├── README.md
 └── .nojekyll
