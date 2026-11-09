@@ -46,7 +46,7 @@ p { margin-bottom: var(--spacing-sm); }
 :focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
 
 /* ============================================================
-   HEADER & NAVIGATION
+   HEADER & NAVIGATION (FIXED DROPDOWN)
    ============================================================ */
 .site-header { background-color: var(--color-white); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); flex-wrap: wrap; gap: var(--spacing-sm); }
@@ -82,15 +82,13 @@ p { margin-bottom: var(--spacing-sm); }
 .main-nav > ul > li > a:hover,
 .main-nav > ul > li > .dropdown-toggle:hover { color: var(--color-gold-hover); }
 .main-nav > ul > li > a[aria-current="page"] { color: var(--color-gold); border-bottom: 2px solid var(--color-gold); }
-.main-nav > ul > li > .dropdown-toggle[aria-expanded="true"] { color: var(--color-gold); }
 
 .dropdown-icon { font-size: 0.75rem; transition: transform 0.2s ease; }
-.has-dropdown.is-open > .dropdown-toggle .dropdown-icon { transform: rotate(180deg); }
 
-/* Dropdown Submenu */
+/* --- Dropdown Submenu Base --- */
 .dropdown-menu {
   list-style: none;
-  display: none;
+  display: none; /* Hidden by default */
   flex-direction: column;
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -99,6 +97,10 @@ p { margin-bottom: var(--spacing-sm); }
   padding: 0.5rem 0;
   min-width: 220px;
   z-index: 101;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0; /* CRITICAL FIX: No gap between trigger and menu */
 }
 
 .dropdown-menu li a {
@@ -111,33 +113,18 @@ p { margin-bottom: var(--spacing-sm); }
 
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus { background-color: var(--color-ivory); color: var(--color-navy); }
-.dropdown-menu li a[aria-current="page"] { color: var(--color-gold); font-weight: 600; }
 
-/* Desktop: hover + focus-within (gated to pointer devices) */
-@media (hover: hover) and (pointer: fine) and (min-width: 901px) {
-  .has-dropdown:hover > .dropdown-menu,
-  .has-dropdown:focus-within > .dropdown-menu {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 0.5rem;
-  }
-  .has-dropdown.user-closed > .dropdown-menu { display: none; }
-}
-
-/* Desktop click toggle */
+/* --- Desktop Hover (The Ultimate Authority) --- */
 @media (min-width: 901px) {
+  .has-dropdown:hover > .dropdown-menu {
+    display: flex !important; /* Forces menu open on hover */
+  }
   .has-dropdown.is-open > .dropdown-menu {
-    display: flex;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 0.5rem;
+    display: flex !important; /* Keeps it open if clicked */
   }
 }
 
-/* Mobile navigation */
+/* --- Mobile Navigation --- */
 @media (max-width: 900px) {
   .mobile-menu-toggle { display: block; }
   .main-nav.js-enabled {
