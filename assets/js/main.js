@@ -3,52 +3,138 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('current-year');
   if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Mobile menu toggle
+  // Mobile main navigation toggle
   const nav = document.getElementById('main-nav');
-  const toggle = document.querySelector('.mobile-menu-toggle');
-  if (nav && toggle) {
+  const navToggle = document.querySelector('.mobile-menu-toggle');
+  if (nav && navToggle) {
     nav.classList.add('js-enabled');
-    toggle.addEventListener('click', () => {
-      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !isExpanded);
+    navToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.contains('is-open');
       nav.classList.toggle('is-open');
-    });
-    const navLinks = nav.querySelectorAll('a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (nav.classList.contains('is-open')) {
-          nav.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      // Closing the main nav also closes any open dropdowns
+      if (isOpen) closeAllDropdowns();
     });
   }
 
-  // Dropdown toggles for mobile
-  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-  dropdownToggles.forEach(toggleBtn => {
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault(); // Prevents anchor link from jumping to top
-      e.stopPropagation(); 
-      const menu = toggleBtn.nextElementSibling;
-      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', !isExpanded);
-      menu.classList.toggle('is-open');
+  // Practice Areas dropdown — single coordinated state machine
+  const dropdowns = document.querySelectorAll('.has-dropdown');
+  const isTouchDevice = () => window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  function closeAllDropdowns() {
+    dropdowns.forEach(dd => {
+      dd.classList.remove('is-open', 'user-closed');
+      const btn = dd.querySelector('.dropdown-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function toggleDropdown(dd) {
+    const btn = dd.querySelector('.dropdown-toggle');
+    if (!btn) return;
+    const isOpen = dd.classList.contains('is-open');
+    // If user previously closed via Escape, allow reopen
+    dd.classList.remove('user-closed');
+    dd.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
+  function openDropdown(dd) {
+    const btn = dd.querySelector('.dropdown-toggle');
+    if (!btn) return;
+    dd.classList.remove('user-closed');
+    dd.classList.add('is-open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeDropdown(dd) {
+    const btn = dd.querySelector('.dropdown-toggle');
+    if (!btn) return;
+    dd.classList.remove('is-open');
+    dd.classList.add('user-closed'); // prevent hover from reopening
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  dropdowns.forEach(dd => {
+    const btn = dd.querySelector('.dropdown-toggle');
+    if (!btn) return;
+
+    // Click/tap toggle — works on all devices
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown(dd);
+    });
+
+    // Desktop: close on mouseleave (only if not user-closed via Escape)
+    dd.addEventListener('mouseleave', () => {
+      dd.classList.remove('user-closed');
+      if (!isTouchDevice()) {
+        dd.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Keyboard: Enter/Space on trigger toggles
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleDropdown(dd);
+      }
+      if (e.key === 'Escape') {
+        closeDropdown(dd);
+        btn.focus();
+      }
+    });
+
+    // Submenu links: close dropdown on selection (mobile mainly)
+    const submenuLinks = dd.querySelectorAll('.dropdown-menu a');
+    submenuLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Let the link navigate normally; just clean up state
+        dd.classList.remove('is-open', 'user-closed');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+      link.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeDropdown(dd);
+          btn.focus();
+        }
+      });
     });
   });
 
-  // Close dropdowns when clicking outside
+  // Outside click closes dropdowns (but not the main nav toggle button)
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.has-dropdown')) {
-      document.querySelectorAll('.dropdown-menu.is-open').forEach(menu => {
-        menu.classList.remove('is-open');
-        const toggle = menu.previousElementSibling;
-        if (toggle) toggle.setAttribute('aria-expanded', 'false');
-      });
+      closeAllDropdowns();
     }
   });
 
-  // Formspree form handler
+  // Escape anywhere closes dropdowns
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const anyOpen = document.querySelector('.has-dropdown.is-open');
+      if (anyOpen) {
+        e.preventDefault();
+        closeAllDropdowns();
+      }
+    }
+  });
+
+  // Resize: clean up stale state when crossing the mobile/desktop breakpoint
+  let lastWidth = window.innerWidth;
+  window.addEventListener('resize', () => {
+    const currentWidth = window.innerWidth;
+    const crossedBreakpoint =
+      (lastWidth <= 900 && currentWidth > 900) ||
+      (lastWidth > 900 && currentWidth <= 900);
+    if (crossedBreakpoint) closeAllDropdowns();
+    lastWidth = currentWidth;
+  });
+
+  // Formspree contact form handler
   const form = document.getElementById('contact-form-element');
   if (form) {
     form.addEventListener('submit', async (e) => {
