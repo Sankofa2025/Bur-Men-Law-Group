@@ -24,16 +24,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Dropdown toggles for mobile
+  // Dropdown toggles for mobile (FIXED)
   const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   dropdownToggles.forEach(toggleBtn => {
     toggleBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation(); // Prevent click from bubbling up to the document listener
       const menu = toggleBtn.nextElementSibling;
       const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
       toggleBtn.setAttribute('aria-expanded', !isExpanded);
       menu.classList.toggle('is-open');
     });
+  });
+
+  // Close dropdowns when clicking outside (FIXED)
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.has-dropdown')) {
+      document.querySelectorAll('.dropdown-menu.is-open').forEach(menu => {
+        menu.classList.remove('is-open');
+        const toggle = menu.previousElementSibling;
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      });
+    }
   });
 
   // Formspree form handler
