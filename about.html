@@ -31,11 +31,17 @@
         <span class="hamburger" aria-hidden="true"></span>
       </button>
       <nav id="main-nav" class="main-nav">
-        <ul>
+               <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" aria-current="page">About</a></li>
-          <li><a href="criminal-defense.html">Criminal Defense</a></li>
-          <li><a href="civil-rights-family-law.html">Civil Rights & Family Law</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="practice-dropdown">Practice Areas <span aria-hidden="true">▾</span></button>
+            <ul id="practice-dropdown" class="dropdown-menu">
+              <li><a href="criminal-defense.html">Criminal Defense</a></li>
+              <li><a href="civil-rights-family-law.html#civil-rights">Civil Rights Litigation</a></li>
+              <li><a href="civil-rights-family-law.html#family-law">Family Law</a></li>
+            </ul>
+          </li>
           <li><a href="make-a-payment.html">Make a Payment</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
