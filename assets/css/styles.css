@@ -46,7 +46,7 @@ p { margin-bottom: var(--spacing-sm); }
 :focus-visible { outline: 3px solid var(--color-gold); outline-offset: 2px; }
 
 /* ============================================================
-   HEADER & NAVIGATION (FIXED DROPDOWN)
+   HEADER & NAVIGATION
    ============================================================ */
 .site-header { background-color: var(--color-white); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 100; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; padding-top: var(--spacing-sm); padding-bottom: var(--spacing-sm); flex-wrap: wrap; gap: var(--spacing-sm); }
@@ -88,7 +88,7 @@ p { margin-bottom: var(--spacing-sm); }
 /* --- Dropdown Submenu Base --- */
 .dropdown-menu {
   list-style: none;
-  display: none; /* Hidden by default */
+  display: none;
   flex-direction: column;
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -100,7 +100,7 @@ p { margin-bottom: var(--spacing-sm); }
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 0; /* CRITICAL FIX: No gap between trigger and menu */
+  margin-top: 0;
 }
 
 .dropdown-menu li a {
@@ -114,13 +114,14 @@ p { margin-bottom: var(--spacing-sm); }
 .dropdown-menu li a:hover,
 .dropdown-menu li a:focus { background-color: var(--color-ivory); color: var(--color-navy); }
 
-/* --- Desktop Hover (The Ultimate Authority) --- */
+/* --- Desktop Hover --- */
 @media (min-width: 901px) {
-  .has-dropdown:hover > .dropdown-menu {
-    display: flex !important; /* Forces menu open on hover */
+  .has-dropdown:hover > .dropdown-menu,
+  .has-dropdown:focus-within > .dropdown-menu {
+    display: flex !important;
   }
   .has-dropdown.is-open > .dropdown-menu {
-    display: flex !important; /* Keeps it open if clicked */
+    display: flex !important;
   }
 }
 
@@ -163,7 +164,6 @@ p { margin-bottom: var(--spacing-sm); }
     margin-top: var(--spacing-sm);
   }
 
-  /* Mobile dropdown: inline expansion */
   .dropdown-menu {
     position: static;
     box-shadow: none;
@@ -291,7 +291,7 @@ p { margin-bottom: var(--spacing-sm); }
 .partner-card.retired-card { background-color: #fcfbf9; border-color: var(--color-border); }
 
 /* ============================================================
-   FAQ LIST (homepage)
+   FAQ LIST
    ============================================================ */
 .faq-list { max-width: 800px; margin: 0 auto; }
 .faq-item { background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius); margin-bottom: 1rem; }
@@ -302,8 +302,57 @@ p { margin-bottom: var(--spacing-sm); }
 .faq-item p { padding: 0 1rem 1rem 1rem; margin-bottom: 0; color: var(--color-text-light); }
 
 /* ============================================================
-   PROCESS LIST (criminal defense page)
+   PROCESS LIST
    ============================================================ */
 .process-list { list-style: none; counter-reset: process-counter; }
 .process-list li { position: relative; padding-left: 3rem; margin-bottom: var(--spacing-md); counter-increment: process-counter; }
 .process-list li::before { content: counter(process-counter); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; background-color: var(--color-gold); color: var(--color-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: var(--font-serif); }
+
+/* ============================================================
+   VIDEO GRID (NEW)
+   ============================================================ */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-md);
+}
+
+.video-card {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+.video-title {
+  padding: 1rem 1rem 0.5rem 1rem;
+  font-size: 1.1rem;
+  color: var(--color-navy);
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-serif);
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16; 
+  background-color: #000000;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
