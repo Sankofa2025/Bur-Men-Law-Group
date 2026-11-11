@@ -29,10 +29,19 @@
       <button type="button" class="mobile-menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation menu">
         <span class="hamburger" aria-hidden="true"></span>
       </button>
-      <nav id="main-nav" class="main-nav">
+           <nav id="main-nav" class="main-nav">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
+          <li class="has-dropdown">
+            <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="about-submenu">
+              About
+              <span class="dropdown-icon" aria-hidden="true">▾</span>
+            </button>
+            <ul class="dropdown-menu" id="about-submenu">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="videos.html">Video Resources</a></li>
+            </ul>
+          </li>
           <li class="has-dropdown">
             <button type="button" class="dropdown-toggle" aria-expanded="false" aria-controls="practice-areas-submenu">
               Practice Areas
@@ -45,9 +54,9 @@
             </ul>
           </li>
           <li><a href="make-a-payment.html">Make a Payment</a></li>
-          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
-        <a href="#contact-form" class="button button-primary">Request a Consultation</a>
+        <a href="contact.html#contact-form" class="button button-primary">Request a Consultation</a>
       </nav>
     </div>
   </header>
