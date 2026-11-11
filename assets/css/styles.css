@@ -309,7 +309,7 @@ p { margin-bottom: var(--spacing-sm); }
 .process-list li::before { content: counter(process-counter); position: absolute; left: 0; top: 0; width: 2rem; height: 2rem; background-color: var(--color-gold); color: var(--color-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: var(--font-serif); }
 
 /* ============================================================
-   VIDEO GRID (NEW)
+   VIDEO GRID & CARDS (FIXED FOR LETTERBOXING)
    ============================================================ */
 .video-grid {
   display: grid;
@@ -344,40 +344,21 @@ p { margin-bottom: var(--spacing-sm); }
 .video-wrapper {
   position: relative;
   width: 100%;
+  /* Forces a consistent vertical ratio for the grid */
   aspect-ratio: 9 / 16; 
   background-color: #000000;
+  overflow: hidden;
 }
 
 .video-wrapper iframe {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-/* ============================================================
-   VIDEO GRID UPDATE (Centers Landscape Videos)
-   ============================================================ */
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9 / 16; 
-  background-color: #000000;
-  /* Flexbox forces the iframe to the exact center */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.video-wrapper iframe {
-  /* Removes the old stretching rules */
-  position: static !important;
-  top: auto !important;
-  left: auto !important;
   width: 100% !important;
-  height: auto !important; /* Lets the video keep its natural shape */
-  max-height: 100%;
+  height: 100% !important;
+  /* This forces the Facebook player to stay vertical.
+     Facebook will automatically add black bars inside the player 
+     for any landscape or square videos, preventing cropping. */
+  aspect-ratio: 9 / 16 !important; 
   border: none;
 }
