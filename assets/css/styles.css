@@ -356,3 +356,28 @@ p { margin-bottom: var(--spacing-sm); }
   height: 100%;
   border: none;
 }
+/* ============================================================
+   VIDEO GRID UPDATE (Centers Landscape Videos)
+   ============================================================ */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16; 
+  background-color: #000000;
+  /* Flexbox forces the iframe to the exact center */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  /* Removes the old stretching rules */
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: auto !important; /* Lets the video keep its natural shape */
+  max-height: 100%;
+  border: none;
+}
