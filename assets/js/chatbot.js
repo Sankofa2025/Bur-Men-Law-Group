@@ -57,11 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const homeTrigger = document.querySelector('.bm-chat-trigger-btn');
       if (homeTrigger) homeTrigger.addEventListener('click', (e) => { e.preventDefault(); openPanel(); });
 
-      addBotMessage("Welcome. I can help you find information about Bur-Men Law Group’s practice areas, consultations, office, and payment link. What would you like to know?", [
-        "What types of cases do you handle?", "Where is your office?", "How do I request a consultation?", "How do I make a payment?"
-      ]);
+      showMainMenu();
       console.log('Chatbot initialization complete');
     } catch (error) { console.error('Error initializing chatbot:', error); }
+  }
+
+  function showMainMenu() {
+    messagesContainer.innerHTML = '';
+    addBotMessage("Welcome. I can help you find information about Bur-Men Law Group’s practice areas, consultations, office, and payment link. What would you like to know?", [
+      "What types of cases do you handle?", 
+      "Where is your office?", 
+      "How do I request a consultation?", 
+      "How do I make a payment?"
+    ]);
   }
 
   function togglePanel() { isOpen ? closePanel() : openPanel(); }
@@ -109,10 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (/\b(911|emergency|danger|hurt|unsafe|suicide)\b/i.test(normalizedInput)) {
       addBotMessage("If you are facing an immediate threat to physical safety, please call 911 immediately. This assistant cannot provide emergency assistance.");
+      appendResetButton();
       return;
     }
     if (/\b(ssn|social security|credit card|bank account|routing number)\b/i.test(normalizedInput)) {
       addBotMessage("⚠️ Please do not share confidential details, Social Security numbers, financial information, or card/bank details in this chat. This is not a secure channel. Please call the firm at (224) 637-8872.");
+      appendResetButton();
       return;
     }
 
@@ -159,6 +169,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "How do I request a consultation?", "What is the firm's phone number?"
       ]);
     }
+    
+    appendResetButton();
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function appendResetButton() {
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'bm-chat-reset-btn';
+    resetBtn.textContent = 'Return to Main Menu';
+    resetBtn.addEventListener('click', () => {
+      showMainMenu();
+    });
+    messagesContainer.appendChild(resetBtn);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
