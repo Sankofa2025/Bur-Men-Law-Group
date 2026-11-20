@@ -49,6 +49,29 @@
 .bm-chat-send:disabled { background-color: var(--color-border); cursor: not-allowed; }
 .bm-chat-send:focus-visible { outline: 2px solid var(--color-navy); outline-offset: 2px; }
 
+/* --- Return to Main Menu Button --- */
+.bm-chat-reset-btn {
+  align-self: center;
+  background-color: transparent;
+  border: 1px solid var(--color-navy);
+  color: var(--color-navy);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+.bm-chat-reset-btn:hover {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+.bm-chat-reset-btn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
 @media (max-width: 480px) {
   .bm-chat-panel { width: calc(100vw - 20px); right: 10px; bottom: 70px; height: 60vh; }
   .bm-chat-launcher { right: 10px; bottom: 10px; font-size: 15px; padding: 10px 16px; }
